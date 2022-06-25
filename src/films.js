@@ -2,10 +2,10 @@
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
 
-  let result=movies.map((element) => {
+  let result=array.map((element) => {
     return element.director;
   })
-  
+  return result;
   console.log("EXERCICE 1 ->", result);
  }
 
@@ -13,10 +13,8 @@ function getAllDirectors(array) {
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, director) {
   let searchDirector;
-  let searchMovie;
-  let nameDirector= 'Francis Ford Coppola';
 
-  searchDirector = movies.filter((element)=>element.director == nameDirector);
+  searchDirector = array.filter((element)=>element.director == director);
   
   console.log(searchDirector);
 
@@ -27,9 +25,9 @@ function getMoviesFromDirector(array, director) {
 function moviesAverageOfDirector(array, director) {
   let totalScore;
   let getScores;
-  let arrayMovies = getMoviesFromDirector();
+  let moviesByDirector = getMoviesFromDirector(array, director);
  
-  getScores = arrayMovies.map((element) => {
+  getScores = moviesByDirector.map((element) => {
     return element.score;
   })
 
@@ -48,7 +46,7 @@ function orderAlphabetically(array) {
     if (x.title > y.title) {return 1;}
     return 0;
 }
-let orderTitles = movies.sort(titlesAlphabetically).slice(0,20);
+let orderTitles = array.sort(titlesAlphabetically).slice(0,20);
 console.log(orderTitles);
 return orderTitles;
 }
