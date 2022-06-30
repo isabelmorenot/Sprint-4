@@ -76,14 +76,27 @@ function moviesAverageByCategory(array,genre) {
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
+function hoursToMinutes(array) {
   
-  
+  let hour = array.map(({...element}) => {
+    element.duration = element.duration * 60;
+    return element; 
+  })
+  return hour;
+
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-  
+function bestFilmOfYear(array,year) {
+  function orderScore (x,y){
+    if (x.score > y.score){return -1;}
+    if (x.score < y.score){return 1;}
+    return 0
+  }
+  let findYear = array.filter((element) => element.year == year);
+  let bestScore= findYear.sort(orderScore).splice(0,1);
+
+  return bestScore;
 }
 
 
